@@ -2,7 +2,7 @@ import React from 'react';
 
 var listNames = [];
 
-class Form extends React.Component{
+class App extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -34,4 +34,4 @@ class Form extends React.Component{
     }
   }
 
-  export default Form;
+  export default App;
