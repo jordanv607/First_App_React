@@ -1,51 +1,37 @@
 import React from 'react';
-import './App.css';
 
-//permite devolver que es lo queremos 'pintar en la pantalla'
-function App() {
-  return (
-    <div>
-      This is my component: 
-      <Helloworld text="texto1" subtitulo= "sub1" /> 
-      <Helloworld text="texto2" subtitulo= "sub1" /> 
-      <Helloworld text="texto3" subtitulo= "sub1" /> 
-      </div>
-  );
-}
+var listNames = [];
 
-class Helloworld extends React.Component{
+class Form extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: ''
+        };
+    }
 
-  state = {
-    show: true
-  }
+    handleSubmit = (event) => {
+        event.preventDefault();
+        listNames.push(' ' + this.state.name);
+        //llamar a display
+        alert(listNames.toString());
+    }
 
-  cambiarEstado = () => {
-    //alert("hola");
-    this.setState({show: false});
-  }
+    myChangeHandler = (event) => {
+        this.setState({name: event.target.value}); //username: event.target.value
+    }
 
-  render(){
-    if(this.state.show){
-      return(
-        <div id= "hello">
-          <h3>{this.props.subtitulo}</h3>
-          <p>{this.props.text}</p>
-          <button onClick={this.cambiarEstado} >Cambiar estado</button>
-        </div>
-      )
-    }else{
-      return <h3>No elements</h3>
+    render(){
+     return(
+       <form onSubmit={this.handleSubmit}>
+        <label>
+        Name:
+        <input type="text" name="name" onChange={this.myChangeHandler} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+      );
     }
   }
-}
 
-/*
-//Componente
-function Helloworld(props){
-  return (
-    <div>{props.text}</div>
-  );
-}
-*/
-
-export default App;
+  export default Form;
