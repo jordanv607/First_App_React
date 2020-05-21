@@ -1,2 +1,2 @@
 # First_App_React
- Simple React app
+ This is a Simple React app with the basic concepts.
